@@ -29,3 +29,4 @@ uvicorn api.main:app --port 8080
 - GET  /health       — model status
 - POST /predict      — single item forecast
 - POST /predict/batch — bulk forecast
+# m5-demand-forecasting
