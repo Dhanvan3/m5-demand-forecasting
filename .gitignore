@@ -1,0 +1,7 @@
+m5-env/
+data/raw/
+data/processed/
+mlruns/
+__pycache__/
+*.pyc
+.DS_Store
