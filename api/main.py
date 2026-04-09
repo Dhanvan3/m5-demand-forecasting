@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from contextlib import asynccontextmanager
-import mlflow.xgboost
+import xgboost as xgb
 import pandas as pd
 import numpy as np
 import warnings
@@ -46,10 +46,10 @@ models = {}
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print("Loading model from MLflow registry...")
-    models["xgb"] = mlflow.xgboost.load_model(
-        "models:/m5-xgboost-forecaster/2"
-    )
+    print("Loading model from file...")
+    model = xgb.XGBRegressor()
+    model.load_model("api/model/xgb_model.json")
+    models["xgb"] = model
     print("Model loaded!")
     yield
     models.clear()
